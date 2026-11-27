@@ -9,7 +9,8 @@
 - 安装目录 `plugins/unrestricted/` → `plugins/viper/`。
 - 新增 `assets/logo.svg`、`assets/banner.svg`，README 重写并加入品牌区。
 - 版本号 `4.1.0` → `4.2.0`。
-- `unrestricted` agent 名称保持不变：它是角色名，不是项目名。
+- 默认主 agent 更名：`unrestricted` → `viper`（`agents/viper.md`，斜杠命令 `/viper`）。
+- 注入标记 `[UNRESTRICTED-LAB]` → `[VIPER-LAB]`、`[MODE: UNRESTRICTED]` → `[MODE: VIPER]`；旧标记仍被识别，便于平滑迁移。
 
 ## 4.1.0 — 2026-11-25
 

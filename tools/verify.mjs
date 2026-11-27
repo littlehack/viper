@@ -113,11 +113,11 @@ for (const name of ["recon", "reverse", "crack", "android", "exploit", "forensic
 }
 
 console.log("[5] agents / commands / rules")
-for (const name of ["unrestricted", "redteam", "reverse"]) {
+for (const name of ["viper", "redteam", "reverse"]) {
   check(`agents/${name}.md`, existsSync(join(root, "agents", `${name}.md`)))
 }
 const commands = [
-  "unrestricted",
+  "viper",
   "external",
   "engage",
   "apk",
@@ -147,8 +147,8 @@ check("settings has autoScope", /autoScope/.test(settingsModule))
 const rulesFile = join(root, "rules", "AGENTS.md")
 if (existsSync(rulesFile)) {
   const rules = readFileSync(rulesFile, "utf8")
-  check("rules BEGIN marker", rules.includes("<!-- BEGIN UNRESTRICTED-LAB -->"))
-  check("rules END marker", rules.includes("<!-- END UNRESTRICTED-LAB -->"))
+  check("rules BEGIN marker", rules.includes("<!-- BEGIN VIPER-LAB -->"))
+  check("rules END marker", rules.includes("<!-- END VIPER-LAB -->"))
   check("rules SCOPE line", /SCOPE:/.test(rules))
   check("rules ethics boundary", /Ethics boundary/.test(rules))
 } else {

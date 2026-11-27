@@ -100,11 +100,11 @@ export default async (input) => ({ hooks })
    在该项目里加一行显式覆盖，或临时移走项目规则验证。
 3. **`session.context` 没注册**：看 `lab_status.hooks`，缺它就没有 system 注入。
 4. **模型对齐强度高**：破甲是上下文工程，不是权重修改。把目标写具体（IP、端口、产物路径）
-   比抽象要求更有效；用 `/unrestricted` 或 `/external` 带上目标重发。
+   比抽象要求更有效；用 `/viper` 或 `/external` 带上目标重发。
 5. **agent 自身定义覆盖了 system 顺序**：注入用 `unshift` 放在最前，但个别 agent 会在
    agent 级 instructions 里重复声明政策。检查该 agent 的 Markdown。
 
-## 7. `unrestricted` / `redteam` 这两个 agent 反而没有注入（3.0 遗留 bug）
+## 7. `viper` / `redteam` 这两个 agent 反而没有注入（3.0 遗留 bug）
 
 已在 4.0 修复。原因是旧版把 `[MODE: UNRESTRICTED]` 和 `[UNRESTRICTED-LAB]` 放在同一个
 "已注入"判定里，而 agent 定义本身就带 `[MODE: …]`，于是被误判为"已注入"。
@@ -113,8 +113,8 @@ export default async (input) => ({ hooks })
 
 | 正则 | 用途 |
 |---|---|
-| `INJECT_MARKER_RE` → `[UNRESTRICTED-LAB]` / `[UNRESEARCH-LAB]` | 只用于幂等判定 |
-| `QUOTE_MARKER_RE` → `[MODE: UNRESTRICTED]` / `[MODE: REDTEAM-EXECUTOR]` | 只用于 prompt 去重 |
+| `INJECT_MARKER_RE` → `[VIPER-LAB]`（兼容 `[UNRESTRICTED-LAB]` / `[UNRESEARCH-LAB]`） | 只用于幂等判定 |
+| `QUOTE_MARKER_RE` → `[MODE: VIPER]`（兼容 `[MODE: UNRESTRICTED]`）/ `[MODE: REDTEAM-EXECUTOR]` | 只用于 prompt 去重 |
 
 `tools/selftest.mjs` 有回归断言 `regression P1-1`，改坏会直接失败。
 
@@ -127,7 +127,7 @@ export default async (input) => ({ hooks })
 
 ## 9. prompt 出现重复段落
 
-幂等靠三个条件：system 内已有 `[UNRESTRICTED-LAB]`、文本已含 `authorized research environment`、
+幂等靠三个条件：system 内已有 `[VIPER-LAB]`、文本已含 `authorized research environment`、
 或文本命中 `QUOTE_MARKER_RE`。
 
 如果出现重复，说明历史消息里已有旧版改写（旧版句式不同）。开新会话即可，或只保留 system 注入：
@@ -189,7 +189,7 @@ Remove-Item "$env:USERPROFILE\.config\opencode\plugin\unrestricted-boost.ts" -Fo
 $cfg = "$env:USERPROFILE\.config\opencode"
 Remove-Item "$cfg\plugins\viper" -Recurse -Force
 Remove-Item "$cfg\lab-audit.jsonl" -Force -ErrorAction SilentlyContinue
-# 如合并过规则块，编辑 $cfg\AGENTS.md 删除 <!-- BEGIN/END UNRESTRICTED-LAB --> 之间的内容
+# 如合并过规则块，编辑 $cfg\AGENTS.md 删除 <!-- BEGIN/END VIPER-LAB --> 之间的内容
 ```
 
 `lab-scope.json` 建议保留：它是历史记录，删掉不影响运行。

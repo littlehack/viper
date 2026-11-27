@@ -71,7 +71,7 @@ function makeCtx(options = {}) {
     { id: "plan", mode: "primary", permissions: [] },
     { id: "general", mode: "subagent", permissions: [] },
     {
-      id: "unrestricted",
+      id: "viper",
       mode: "primary",
       permissions: [{ action: "read", resource: "*.env.*", effect: "allow" }],
     },
@@ -145,7 +145,7 @@ test("any agent receives the lab block", () => {
   const system = []
   A.hooks.context[0]({ agent: "build", system, messages: [] })
   assert.equal(system.length, 1)
-  assert.match(system[0].text, /\[UNRESTRICTED-LAB\]/)
+  assert.match(system[0].text, /\[VIPER-LAB\]/)
   assert.match(system[0].text, /Active agent = build/)
   assert.match(system[0].text, /coverage: every agent in this runtime/)
   assert.match(system[0].text, /\[SCOPE:/)
@@ -154,10 +154,10 @@ test("any agent receives the lab block", () => {
 })
 
 test("regression P1-1: dedicated agent marker no longer suppresses injection", () => {
-  const system = [{ type: "text", text: "[MODE: UNRESTRICTED]\n[LAB_MARKER: UNRESTRICTED-LAB]" }]
-  A.hooks.context[0]({ agent: "unrestricted", system, messages: [] })
+  const system = [{ type: "text", text: "[MODE: VIPER]\n[LAB_MARKER: VIPER-LAB]" }]
+  A.hooks.context[0]({ agent: "viper", system, messages: [] })
   assert.equal(system.length, 2)
-  assert.match(system[0].text, /\[UNRESTRICTED-LAB\]/)
+  assert.match(system[0].text, /\[VIPER-LAB\]/)
   assert.match(system[0].text, /id=lab-1/)
   assert.match(system[0].text, /excluded_paths=2/)
 })
@@ -250,11 +250,11 @@ await testAsync("lab_status reports coverage, hooks, ethics, audit", async () =>
 })
 
 test("regression P1-2: agent transform keeps fine-grained YAML permissions", () => {
-  const unrestricted = A.agents.find((agent) => agent.id === "unrestricted")
-  const resources = unrestricted.permissions.map((rule) => `${rule.action}:${rule.resource}`)
+  const viper = A.agents.find((agent) => agent.id === "viper")
+  const resources = viper.permissions.map((rule) => `${rule.action}:${rule.resource}`)
   assert.ok(resources.includes("read:*.env.*"))
   assert.ok(resources.includes("*:*"))
-  assert.equal(unrestricted.mode, "primary")
+  assert.equal(viper.mode, "primary")
 })
 
 test("agent transform hardens the reverse subagent", () => {

@@ -20,7 +20,7 @@
 
 | dsh-purge 的做法 | 解决的问题 | 4.1 的对应 |
 |---|---|---|
-| 人设前置硬约束（指挥四件事、执行五角色） | 模型自由发挥、反复确认 | `[UNRESTRICTED-LAB]` + `[TARGET-BOUND]` 双块注入 |
+| 人设前置硬约束（指挥四件事、执行五角色） | 模型自由发挥、反复确认 | `[VIPER-LAB]` + `[TARGET-BOUND]` 双块注入 |
 | 锚点门：bootstrap 限输出，先调工具 | 首轮空转、长篇计划代替执行 | `START NOW: <first command>` + "禁止只给计划" |
 | 能力协议：先读 skill/MCP 目录再选 | 有工具不用、自己造轮子 | `lab_target` 定链 + `lab_playbook` 取方法论 |
 | 资产落库：没落库的发现等于没发生 | 长会话丢上下文 | `lab-scope.json` + `scope.auto` 审计 + 会话绑定 |
@@ -88,7 +88,7 @@ JSONL 审计 + 链内成功判据替代，不引入数据库。
 同一份内容注入两次：
 
 1. **admission**：`session.prompt` 把 `[TARGET-BOUND]` 追加到用户这一轮文本末尾；
-2. **每请求**：`session.context` 把它并入 `[UNRESTRICTED-LAB]`，压缩/瞬态生成同样注入。
+2. **每请求**：`session.context` 把它并入 `[VIPER-LAB]`，压缩/瞬态生成同样注入。
 
 块的结构：
 

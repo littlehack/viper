@@ -13,7 +13,7 @@
 | `src/prompt/frame.ts` | markers, intent | 用户回合框架、历史消息改写 | 不碰 system |
 | `src/prompt/inject.ts` | markers, util/text | system 前置注入与幂等 | 不生成文本 |
 | `src/prompt/engage.ts` | target/plan | 生成 `[TARGET-BOUND]` 块 | 不做 IO |
-| `src/prompt/boost.ts` | scope, ethics, settings, engage | 生成 `[UNRESTRICTED-LAB]` 块 | 不做 IO |
+| `src/prompt/boost.ts` | scope, ethics, settings, engage | 生成 `[VIPER-LAB]` 块 | 不做 IO |
 | `src/target/detect.ts` | – | 目标识别与分类（纯函数） | 不读文件、不联网 |
 | `src/target/plan.ts` | target/detect | 每种目标的默认链与首条命令 | 不执行命令 |
 | `src/target/binding.ts` | target/detect | 会话级目标绑定（内存，上限 64） | 不落盘 |
@@ -81,7 +81,7 @@ plugin
 
 ## 5. 设计不变量
 
-1. **幂等**：`INJECT_MARKER_RE` 只认 `[UNRESTRICTED-LAB]` / `[UNRESEARCH-LAB]`。agent 定义里的
+1. **幂等**：`INJECT_MARKER_RE` 认 `[VIPER-LAB]`，并兼容旧标记 `[UNRESTRICTED-LAB]` / `[UNRESEARCH-LAB]`。agent 定义里的
    `[MODE: …]` 归 `QUOTE_MARKER_RE`，只用于 frame 去重，不影响注入。
 2. **拒绝优先**：`permission.evaluate` 里先判 `excluded_paths`，再判 `ask`；`deny` 不被改写。
 3. **失败隔离**：`createGuard` 管注册，`guardCallback` 管执行，两层都不允许异常冒到会话。

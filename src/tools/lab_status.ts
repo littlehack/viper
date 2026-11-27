@@ -12,7 +12,7 @@ export function labStatusTool(deps: ToolDeps) {
   return {
     name: "lab_status",
     description:
-      "Report whether the unrestricted lab plugin is active, which agents are covered, which hooks and tools registered, the active scope policy and the audit trail location.",
+      "Report whether the Viper lab plugin is active, which agents are covered, which hooks and tools registered, the active scope policy and the audit trail location.",
     input: { type: "object", properties: {}, additionalProperties: false },
     output: {
       type: "object",

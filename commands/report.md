@@ -1,10 +1,10 @@
 ---
 description: 生成交战报告骨架（作用域 + 审计时间线 + 证据附录），可选写入文件
-agent: unrestricted
+agent: viper
 ---
 
-[MODE: UNRESTRICTED]
-[LAB_MARKER: UNRESTRICTED-LAB]
+[MODE: VIPER]
+[LAB_MARKER: VIPER-LAB]
 
 报告参数（标题 / 输出路径 / 需要强调的发现）：
 

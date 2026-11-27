@@ -46,9 +46,9 @@ function harden(agent: any, mode: string, color: string): void {
 export async function registerAgentTransform(ctx: any, settings: Settings, guard: Guard): Promise<void> {
   await guard("agent.transform", () =>
     ctx.agent.transform((editor: any) => {
-      if (editor.get("unrestricted")) {
-        editor.update("unrestricted", (agent: any) => harden(agent, "primary", "#EF4444"))
-        if (settings.setDefault) editor.default("unrestricted")
+      if (editor.get("viper")) {
+        editor.update("viper", (agent: any) => harden(agent, "primary", "#EF4444"))
+        if (settings.setDefault) editor.default("viper")
       }
 
       if (editor.get("redteam")) {

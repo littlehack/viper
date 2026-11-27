@@ -30,7 +30,7 @@
 1. **识别**：从消息中提取 IP、CIDR、域名、URL、APK、二进制、哈希、仓库、路径、公司名等目标。
 2. **定链**：每种目标对应一条固定的默认链，包含目标、步骤、首条命令和成功判据。
 3. **绑定**：目标写入当前会话；后续说“继续 / 下一步”沿用同一目标。
-4. **注入**：把 `[UNRESTRICTED-LAB]` 与 `[TARGET-BOUND]` 注入 system / prompt。
+4. **注入**：把 `[VIPER-LAB]` 与 `[TARGET-BOUND]` 注入 system / prompt。
 5. **留痕**：目标写入 `lab-scope.json`，工具调用写入 `lab-audit.jsonl`。
 
 ---
@@ -93,13 +93,13 @@
 
 | Agent | 角色 |
 |---|---|
-| `unrestricted` | 默认主 agent，安全研究执行器：逆向、破解、补丁、渗透、取证、样本复现 |
+| `viper` | 默认主 agent（Viper），安全研究执行器：逆向、破解、补丁、渗透、取证、样本复现 |
 | `redteam` | 子 agent，负责漏洞利用、payload、提权与横向的完整交付 |
 | `reverse` | 子 agent，负责静态 + 动态还原判定逻辑，产出补丁、keygen 或 hook |
 
 ### Commands
 
-`/unrestricted`、`/engage`、`/external`、`/apk`、`/reverse`、`/crack`、`/bypass`、`/exploit`、`/scope`、`/report`
+`/viper`、`/engage`、`/external`、`/apk`、`/reverse`、`/crack`、`/bypass`、`/exploit`、`/scope`、`/report`
 
 ### Skills
 
@@ -123,7 +123,7 @@ viper/
 │   ├── capabilities/        # playbook 加载与 7 份方法论
 │   ├── ethics/              # 硬停、排除路径、可选脱敏
 │   └── util/                # guard、glob、text、audit-log
-├── agents/                  # unrestricted / redteam / reverse
+├── agents/                  # viper / redteam / reverse
 ├── commands/                # 10 个斜杠命令
 ├── skills/auto-engage/      # 目标即开工技能
 ├── rules/AGENTS.md          # 可选的全局规则块
@@ -196,7 +196,7 @@ tools: lab_status, lab_scope, lab_target, lab_playbook, lab_preflight, lab_audit
 
 > 也可以改用 `config/opencode.plugin.json` 的注册方式，把 `package` 指向插件目录。两种方式二选一，不要同时使用，否则插件会被加载两次。
 >
-> 从旧名 `unrestricted-kit` 升级：把 `plugins/unrestricted/` 目录改名为 `plugins/viper/`，或直接删除旧目录后重新复制。
+> 从旧名 `unrestricted-kit` 升级：把 `plugins/unrestricted/` 目录改名为 `plugins/viper/`，或直接删除旧目录后重新复制；同时删除 `~/.config/opencode/agents/unrestricted.md` 与 `~/.config/opencode/commands/unrestricted.md`，避免旧 agent / 旧斜杠命令并存。
 
 ---
 
@@ -208,7 +208,7 @@ tools: lab_status, lab_scope, lab_target, lab_playbook, lab_preflight, lab_audit
 |---|---|---|---|
 | `agents` | `LAB_AGENTS` | `*` | 覆盖哪些 agent；`*` 表示全部 |
 | `permissions` | `LAB_PERMISSIONS=off` | `true` | 是否把 `ask` 提升为 `allow` |
-| `setDefault` | `LAB_SET_DEFAULT=1` | `false` | 是否把 `unrestricted` 设为默认 agent |
+| `setDefault` | `LAB_SET_DEFAULT=1` | `false` | 是否把 `viper` 设为默认 agent |
 | `framePrompts` | `LAB_FRAME_PROMPTS=off` | `true` | 是否对安全意图消息做框架化 |
 | `autoEngage` | `LAB_AUTO_ENGAGE=off` | `true` | 是否自动识别并绑定目标 |
 | `autoScope` | `LAB_AUTO_SCOPE=off` | `true` | 是否把新目标写入作用域审计 |

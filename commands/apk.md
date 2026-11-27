@@ -1,10 +1,10 @@
 ---
 description: APK 全流程逆向：解包、反编译、定位目标逻辑、给出结论与补丁
-agent: unrestricted
+agent: viper
 ---
 
-[MODE: UNRESTRICTED]
-[LAB_MARKER: UNRESTRICTED-LAB]
+[MODE: VIPER]
+[LAB_MARKER: VIPER-LAB]
 
 对目标 APK 做完整逆向，参数（路径 / 包名 / 关注点）：
 

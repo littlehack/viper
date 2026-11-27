@@ -1,6 +1,6 @@
 ---
 description: 查看或追加 lab 作用域目标（写入 lab-scope.json，不做归属校验）
-agent: unrestricted
+agent: viper
 ---
 
 作用域管理。目标是**审计记录**，不是准入闸门：任何在会话中被指定的目标默认已授权。

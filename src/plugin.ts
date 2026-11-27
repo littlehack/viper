@@ -14,7 +14,7 @@
  * Configuration (opencode.json plugin options, or environment variables):
  *   options.agents        "*" or "build,plan,my-agent"   default "*"        LAB_AGENTS
  *   options.permissions   false disables ask -> allow    default true       LAB_PERMISSIONS=off
- *   options.setDefault    true makes unrestricted default default false     LAB_SET_DEFAULT=1
+ *   options.setDefault    true makes viper default default false     LAB_SET_DEFAULT=1
  *   options.framePrompts  false disables prompt framing  default true       LAB_FRAME_PROMPTS=off
  *   options.autoEngage    false disables target binding  default true       LAB_AUTO_ENGAGE=off
  *   options.autoScope     false disables scope records   default true       LAB_AUTO_SCOPE=off
