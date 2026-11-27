@@ -18,3 +18,8 @@ Thumbs.db
 
 # local records that must never be published
 lab-scope.local.json
+
+# runtime records generated at the repo root (config/ templates stay tracked)
+/lab-scope.json
+/lab-audit.jsonl
+/lab-audit.jsonl.*
