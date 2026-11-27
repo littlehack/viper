@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-labelledby="viper-logo-title">
+  <title id="viper-logo-title">Viper — 蝰蛇</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B1016"/>
+      <stop offset="1" stop-color="#141E28"/>
+    </linearGradient>
+    <linearGradient id="venom" x1="0" y1="0" x2="0.55" y2="1">
+      <stop offset="0" stop-color="#8BFFC4"/>
+      <stop offset="0.45" stop-color="#2FE58A"/>
+      <stop offset="1" stop-color="#0B9E63"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.44" r="0.62">
+      <stop offset="0" stop-color="#2FE58A" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#2FE58A" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="-35%" y="-35%" width="170%" height="170%">
+      <feGaussianBlur stdDeviation="11" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <rect x="1.5" y="1.5" width="509" height="509" rx="110.5" fill="none" stroke="#22303C" stroke-width="3"/>
+  <circle cx="256" cy="250" r="188" fill="url(#halo)"/>
+
+  <!-- body: the V -->
+  <path d="M150 118 C150 252 190 350 256 372 C322 350 362 252 362 118"
+        fill="none" stroke="url(#venom)" stroke-width="46" stroke-linecap="round" filter="url(#glow)"/>
+  <path d="M150 118 C150 252 190 350 256 372 C322 350 362 252 362 118"
+        fill="none" stroke="#CFFFE4" stroke-width="11" stroke-linecap="round" opacity="0.2"/>
+  <!-- scale banding -->
+  <path d="M150 118 C150 252 190 350 256 372 C322 350 362 252 362 118"
+        fill="none" stroke="#04170E" stroke-width="46" stroke-linecap="round"
+        stroke-dasharray="3 18" opacity="0.28"/>
+
+  <!-- head, pointing up along the right arm -->
+  <g transform="translate(362 112) rotate(-90)">
+    <path d="M0 -30 C28 -30 52 -20 66 0 C52 20 28 30 0 30 C-14 30 -20 16 -20 0 C-20 -16 -14 -30 0 -30 Z"
+          fill="url(#venom)" stroke="#04170E" stroke-width="3"/>
+    <path d="M2 -22 C24 -22 44 -14 56 0" fill="none" stroke="#DFFFEE" stroke-width="4" opacity="0.35" stroke-linecap="round"/>
+
+    <!-- eyes -->
+    <g>
+      <circle cx="34" cy="-13" r="8.5" fill="#04170E"/>
+      <circle cx="34" cy="-13" r="5" fill="#9BFFD0"/>
+      <rect x="32.6" y="-17.8" width="2.8" height="9.6" rx="1.4" fill="#04170E"/>
+    </g>
+    <g>
+      <circle cx="34" cy="13" r="8.5" fill="#04170E"/>
+      <circle cx="34" cy="13" r="5" fill="#9BFFD0"/>
+      <rect x="32.6" y="8.2" width="2.8" height="9.6" rx="1.4" fill="#04170E"/>
+    </g>
+
+    <!-- forked tongue -->
+    <path d="M66 0 H90 M90 0 L107 -11 M90 0 L107 11"
+          fill="none" stroke="#FF4D6D" stroke-width="5"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

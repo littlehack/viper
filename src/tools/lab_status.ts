@@ -99,7 +99,7 @@ export function labStatusTool(deps: ToolDeps) {
         const agents = await deps.ctx.agent.list()
         ids = (agents?.data ?? []).map((agent: any) => String(agent.id))
       } catch (error) {
-        console.warn(`[unrestricted.boost] agent.list failed: ${String(error)}`)
+        console.warn(`[viper.boost] agent.list failed: ${String(error)}`)
       }
       const covered = deps.settings.all
         ? ids

@@ -16,7 +16,7 @@ export function createGuard(registered: string[]): Guard {
       if (!registered.includes(label)) registered.push(label)
       return true
     } catch (error) {
-      console.warn(`[unrestricted.boost] skipped ${label}: ${String(error)}`)
+      console.warn(`[viper.boost] skipped ${label}: ${String(error)}`)
       return false
     }
   }
@@ -27,7 +27,7 @@ export function guardCallback<T>(label: string, fn: (event: T) => void): (event:
     try {
       fn(event)
     } catch (error) {
-      console.warn(`[unrestricted.boost] hook failed ${label}: ${String(error)}`)
+      console.warn(`[viper.boost] hook failed ${label}: ${String(error)}`)
     }
   }
 }

@@ -1,10 +1,18 @@
-# unrestricted-kit
+<p align="center">
+  <img src="assets/banner.svg" alt="Viper · 蝰蛇" width="100%">
+</p>
 
-> OpenCode V2 安全研究运行时：给一个目标，自动识别、定链、绑定并开工。
+<p align="center">
+  <img alt="version" src="https://img.shields.io/badge/version-4.2.0-2FE58A?style=flat-square">
+  <img alt="runtime" src="https://img.shields.io/badge/runtime-OpenCode%20V2-0B9E63?style=flat-square">
+  <img alt="node" src="https://img.shields.io/badge/node-%3E%3D%2022.6-339933?style=flat-square&logo=node.js&logoColor=white">
+  <img alt="scope" src="https://img.shields.io/badge/scope-10%20classes-1F6FEB?style=flat-square">
+  <img alt="audit" src="https://img.shields.io/badge/audit-JSONL-8B5CF6?style=flat-square">
+</p>
 
-`unrestricted-kit` 是一个面向授权安全研究的 OpenCode 插件与配套资源包。它把「目标识别 → 默认作战链 → 会话绑定 → 作用域审计 → 执行留痕」全部放进插件层，让模型在读到用户消息时就已经拿到目标类型、目标链和第一条可执行命令，不再停在“你想让我做什么”。
+**Viper（蝰蛇）** 是一个面向授权安全研究的 OpenCode 插件与配套资源包。它把「目标识别 → 默认作战链 → 会话绑定 → 作用域审计 → 执行留痕」全部下沉到插件层：模型读到用户消息时，`[TARGET-BOUND]` 已经带着目标类型、objective、有序链路和第一条可执行命令，不再停在“你想让我做什么”。
 
-版本：`4.1.0` · 运行时：OpenCode V2 · Node：`>= 22.6`
+版本：`4.2.0` · 运行时：OpenCode V2 · Node：`>= 22.6`
 
 ---
 
@@ -12,12 +20,12 @@
 
 普通 agent 收到一个裸目标时，常见反应是反问：
 
-```
+```text
 用户：203.0.113.9
 模型：你想让我做什么？扫描、渗透还是只看端口？
 ```
 
-这不是授权问题，而是任务定义问题。本项目用确定性规则替代追问：
+这不是授权问题，而是任务定义问题。Viper 用确定性规则替代追问：
 
 1. **识别**：从消息中提取 IP、CIDR、域名、URL、APK、二进制、哈希、仓库、路径、公司名等目标。
 2. **定链**：每种目标对应一条固定的默认链，包含目标、步骤、首条命令和成功判据。
@@ -102,8 +110,9 @@
 ## 目录结构
 
 ```text
-unrestricted-kit/
+viper/
 ├── index.ts                 # OpenCode 插件入口，转发到 src/plugin.ts
+├── assets/                  # logo.svg / banner.svg
 ├── src/
 │   ├── plugin.ts            # 组装：设置 → 审计 → hooks → tools
 │   ├── config/              # 设置解析、作用域读写
@@ -132,13 +141,13 @@ unrestricted-kit/
 将整个目录复制到 OpenCode 配置目录：
 
 ```text
-~/.config/opencode/plugins/unrestricted/
+~/.config/opencode/plugins/viper/
 ```
 
 Windows：
 
 ```text
-%USERPROFILE%\.config\opencode\plugins\unrestricted\
+%USERPROFILE%\.config\opencode\plugins\viper\
 ```
 
 OpenCode 会扫描该目录并加载 `index.ts`。`opencode plugin list` 可能显示为空，这是正常的；以会话内 `lab_status` 为准。
@@ -146,10 +155,10 @@ OpenCode 会扫描该目录并加载 `index.ts`。`opencode plugin list` 可能�
 ### 2. 放置配套资源
 
 ```text
-agents/*.md          -> ~/.config/opencode/agents/
-commands/*.md        -> ~/.config/opencode/commands/
-skills/auto-engage/  -> ~/.config/opencode/skills/auto-engage/
-rules/AGENTS.md      -> 合并进全局 AGENTS.md（可选）
+agents/*.md           -> ~/.config/opencode/agents/
+commands/*.md         -> ~/.config/opencode/commands/
+skills/auto-engage/   -> ~/.config/opencode/skills/auto-engage/
+rules/AGENTS.md       -> 合并进全局 AGENTS.md（可选）
 config/lab-scope.json -> ~/.config/opencode/lab-scope.json
 ```
 
@@ -178,7 +187,7 @@ lab_status
 期望看到：
 
 ```text
-unrestricted.boost 4.1.0 active (opencode-v2)
+viper.boost 4.2.0 active (opencode-v2)
 coverage: all-agents
 auto-engage: on | auto-scope: on
 hooks: agent.transform, permission.evaluate, session.prompt, session.context, ...
@@ -186,6 +195,8 @@ tools: lab_status, lab_scope, lab_target, lab_playbook, lab_preflight, lab_audit
 ```
 
 > 也可以改用 `config/opencode.plugin.json` 的注册方式，把 `package` 指向插件目录。两种方式二选一，不要同时使用，否则插件会被加载两次。
+>
+> 从旧名 `unrestricted-kit` 升级：把 `plugins/unrestricted/` 目录改名为 `plugins/viper/`，或直接删除旧目录后重新复制。
 
 ---
 
@@ -302,3 +313,7 @@ selftest: 38/38 passed
 - 硬停只有一项：涉及真实未成年人的性内容。
 - 显式 `deny` 永远优先；`policy.excluded_paths` 中的路径不读取、不复制、不外传。
 - 仅处理运营者已声明的目标；新目标需要运营者在会话中指定。
+
+---
+
+<p align="center"><sub>Viper · 蝰蛇 — target in, chain out.</sub></p>

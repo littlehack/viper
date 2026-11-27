@@ -5,8 +5,8 @@
  * node builtins (OpenCode resolves some builtins lazily at runtime).
  */
 
-export const PLUGIN_ID = "unrestricted.boost"
-export const PLUGIN_VERSION = "4.1.0"
+export const PLUGIN_ID = "viper.boost"
+export const PLUGIN_VERSION = "4.2.0"
 export const API_VERSION = "opencode-v2"
 
 const HOME = process.env.USERPROFILE || process.env.HOME || "."

@@ -1,5 +1,16 @@
 # Changelog
 
+## 4.2.0 — 2026-11-27
+
+### 项目更名：unrestricted-kit → Viper（蝰蛇）
+
+- 仓库更名为 `littlehack/viper`，项目标识 `unrestricted-kit` → `Viper`。
+- 插件 id `unrestricted.boost` → `viper.boost`，`lab_status` 首行随之变化。
+- 安装目录 `plugins/unrestricted/` → `plugins/viper/`。
+- 新增 `assets/logo.svg`、`assets/banner.svg`，README 重写并加入品牌区。
+- 版本号 `4.1.0` → `4.2.0`。
+- `unrestricted` agent 名称保持不变：它是角色名，不是项目名。
+
 ## 4.1.0 — 2026-11-25
 
 「目标即开工」。此前即使有作用域契约，模型仍可能把「只给一个目标」当成信息不全，回一句

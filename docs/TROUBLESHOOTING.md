@@ -25,7 +25,7 @@ lab_status
 
 **这是正常的，不是故障。**
 
-4.0 采用"目录扫描"部署：插件放在 `~/.config/opencode/plugins/unrestricted/index.ts` 即被加载，
+4.0 采用"目录扫描"部署：插件放在 `~/.config/opencode/plugins/viper/index.ts` 即被加载，
 不写入 `opencode.json` 的 `plugins` 数组。`plugin list` 只列配置里的注册项，因此显示为空。
 
 **真正的判据**是会话内 `lab_status` 返回内容，以及日志里没有加载错误。不要为了"让 list 里有名字"
@@ -37,10 +37,10 @@ lab_status
 
 排查：
 
-1. 日志过滤 `unrestricted.boost`：
+1. 日志过滤 `viper.boost`：
    `~/.local/share/opencode/log/opencode.log`（Windows：`%LOCALAPPDATA%\opencode\log\`）。
 2. 看是否有 `skipped tool.lab_status` —— 说明当前 OpenCode 版本没有 `ctx.tool.transform`。
-3. 确认入口文件：`plugins/unrestricted/index.ts` 必须存在，且 `export { default } from "./src/plugin.ts"`。
+3. 确认入口文件：`plugins/viper/index.ts` 必须存在，且 `export { default } from "./src/plugin.ts"`。
 4. `node tools/verify.mjs`，`[1] entry points` 全绿。
 5. `opencode service restart`。
 
@@ -79,7 +79,7 @@ export default async (input) => ({ hooks })
 ```
 
 两者不兼容。要么升级到 V2，要么只用 `rules/AGENTS.md`（不依赖插件 API），并移除
-`plugins/unrestricted`。
+`plugins/viper`。
 
 ## 5. `lab_status` 显示 `coverage: "build,plan"` 而不是 `all-agents`
 
@@ -187,7 +187,7 @@ Remove-Item "$env:USERPROFILE\.config\opencode\plugin\unrestricted-boost.ts" -Fo
 
 ```powershell
 $cfg = "$env:USERPROFILE\.config\opencode"
-Remove-Item "$cfg\plugins\unrestricted" -Recurse -Force
+Remove-Item "$cfg\plugins\viper" -Recurse -Force
 Remove-Item "$cfg\lab-audit.jsonl" -Force -ErrorAction SilentlyContinue
 # 如合并过规则块，编辑 $cfg\AGENTS.md 删除 <!-- BEGIN/END UNRESTRICTED-LAB --> 之间的内容
 ```
@@ -227,7 +227,7 @@ Remove-Item "$cfg\lab-audit.jsonl" -Force -ErrorAction SilentlyContinue
 
 4.1 起这种情况应该消失。按顺序排查：
 
-1. `lab_status`：`version` 必须是 `4.1.0`，`auto-engage: on`。旧进程要 `opencode service restart`。
+1. `lab_status`：`version` 必须是 `4.2.0`，`auto-engage: on`。旧进程要 `opencode service restart`。
 2. 看这一轮 prompt 里有没有 `[TARGET-BOUND]`：
    - 有 → 模型没按契约执行，直接用 `lab_target action:"plan" target:"<原样>"` 补一次并继续；
    - 没有 → 识别失败。`lab_target action:"analyze" target:"<原样>"` 看返回的 `kind`：

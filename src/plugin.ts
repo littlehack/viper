@@ -1,5 +1,5 @@
 /**
- * unrestricted.boost — OpenCode V2 plugin, agent-agnostic edition (v4.0.1)
+ * viper.boost — OpenCode V2 plugin, agent-agnostic edition (v4.2.0)
  * ============================================================================
  * Module map (see docs/ARCHITECTURE.md):
  *   config/    settings + scope file access
@@ -45,7 +45,7 @@ async function resolvePlugin(): Promise<{ define: (definition: any) => any }> {
     if (typeof mod?.Plugin?.define === "function") return mod.Plugin
     if (typeof mod?.define === "function") return { define: mod.define }
   } catch (error) {
-    console.warn(`[unrestricted.boost] @opencode/plugin unavailable: ${String(error)}`)
+    console.warn(`[viper.boost] @opencode/plugin unavailable: ${String(error)}`)
   }
   return { define: (definition: any) => definition }
 }
@@ -67,7 +67,7 @@ export default Plugin.define({
       const mod: any = await import("node:fs")
       fs = mod?.default ?? mod
     } catch (error) {
-      console.warn(`[unrestricted.boost] node:fs unavailable: ${String(error)}`)
+      console.warn(`[viper.boost] node:fs unavailable: ${String(error)}`)
     }
 
     // Redaction is opt-in. The flag lives in lab-scope.json and is re-read on

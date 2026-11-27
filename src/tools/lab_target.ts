@@ -117,7 +117,7 @@ export function labTargetTool(deps: ToolDeps) {
             }
             recorded = true
           } catch (error) {
-            console.warn(`[unrestricted.boost] lab_target scope write failed: ${String(error)}`)
+            console.warn(`[viper.boost] lab_target scope write failed: ${String(error)}`)
           }
         }
       }

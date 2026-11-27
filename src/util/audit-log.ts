@@ -74,7 +74,7 @@ export function createAuditLog(
         }
         fs.appendFileSync(file, `${JSON.stringify(record)}\n`, "utf8")
       } catch (error) {
-        console.warn(`[unrestricted.boost] audit append failed: ${String(error)}`)
+        console.warn(`[viper.boost] audit append failed: ${String(error)}`)
       }
     },
 

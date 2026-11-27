@@ -106,7 +106,7 @@ function recordScope(settings: Settings, fs: any, audit: AuditLog, target: Targe
     })
     return true
   } catch (error) {
-    console.warn(`[unrestricted.boost] auto scope record failed: ${String(error)}`)
+    console.warn(`[viper.boost] auto scope record failed: ${String(error)}`)
     return false
   }
 }

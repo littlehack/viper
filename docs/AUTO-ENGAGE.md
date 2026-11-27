@@ -1,6 +1,6 @@
 # 目标即开工（AUTO-ENGAGE）
 
-> 适用版本：`4.1.0`。实现：`src/target/*`、`src/prompt/engage.ts`、`src/hooks/session.ts`、
+> 适用版本：`4.2.0`。实现：`src/target/*`、`src/prompt/engage.ts`、`src/hooks/session.ts`、
 > `src/tools/lab_target.ts`。
 
 ## 0. 问题
@@ -128,5 +128,5 @@ node --experimental-strip-types tools/selftest.mjs   # 37 项，含分类/绑定
 node tools/verify.mjs                                # 80 项，含模块/命令/技能/接线
 ```
 
-会话内：`lab_status` 期望 `version=4.1.0`、`auto-engage: on`；发一个裸目标，本轮 prompt 应带
+会话内：`lab_status` 期望 `version=4.2.0`、`auto-engage: on`；发一个裸目标，本轮 prompt 应带
 `[TARGET-BOUND]` 与 `START NOW`。

@@ -1,6 +1,6 @@
 # 作用域模型（SCOPE MODEL）
 
-> 适用版本：`4.1.0`。本文描述的规则由 `src/config/scope.ts`、`src/ethics/policy.ts`、
+> 适用版本：`4.2.0`。本文描述的规则由 `src/config/scope.ts`、`src/ethics/policy.ts`、
 > `src/hooks/permission.ts`、`src/target/detect.ts`、`src/target/binding.ts` 实现。
 
 ## 一句话

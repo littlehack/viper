@@ -38,7 +38,7 @@ function walk(dir, predicate, out = []) {
   return out
 }
 
-console.log("\n=== unrestricted-kit verification ===\n")
+console.log("\n=== viper verification ===\n")
 console.log(`root: ${root}\n`)
 
 console.log("[1] entry points")

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" width="1280" height="360" role="img" aria-labelledby="viper-banner-title">
+  <title id="viper-banner-title">Viper · 蝰蛇 — OpenCode V2 security-research runtime</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B1016"/>
+      <stop offset="1" stop-color="#141E28"/>
+    </linearGradient>
+    <linearGradient id="venom" x1="0" y1="0" x2="0.55" y2="1">
+      <stop offset="0" stop-color="#8BFFC4"/>
+      <stop offset="0.45" stop-color="#2FE58A"/>
+      <stop offset="1" stop-color="#0B9E63"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.44" r="0.62">
+      <stop offset="0" stop-color="#2FE58A" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#2FE58A" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="-35%" y="-35%" width="170%" height="170%">
+      <feGaussianBlur stdDeviation="9" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2FE58A" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#2FE58A" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="360" rx="26" fill="url(#bg)"/>
+  <rect x="1.5" y="1.5" width="1277" height="357" rx="24.5" fill="none" stroke="#22303C" stroke-width="3"/>
+  <circle cx="210" cy="180" r="190" fill="url(#halo)"/>
+
+  <!-- mark -->
+  <g transform="translate(70 44) scale(0.53)">
+    <path d="M150 118 C150 252 190 350 256 372 C322 350 362 252 362 118"
+          fill="none" stroke="url(#venom)" stroke-width="46" stroke-linecap="round" filter="url(#glow)"/>
+    <path d="M150 118 C150 252 190 350 256 372 C322 350 362 252 362 118"
+          fill="none" stroke="#CFFFE4" stroke-width="11" stroke-linecap="round" opacity="0.2"/>
+    <path d="M150 118 C150 252 190 350 256 372 C322 350 362 252 362 118"
+          fill="none" stroke="#04170E" stroke-width="46" stroke-linecap="round"
+          stroke-dasharray="3 18" opacity="0.28"/>
+    <g transform="translate(362 112) rotate(-90)">
+      <path d="M0 -30 C28 -30 52 -20 66 0 C52 20 28 30 0 30 C-14 30 -20 16 -20 0 C-20 -16 -14 -30 0 -30 Z"
+            fill="url(#venom)" stroke="#04170E" stroke-width="3"/>
+      <path d="M2 -22 C24 -22 44 -14 56 0" fill="none" stroke="#DFFFEE" stroke-width="4" opacity="0.35" stroke-linecap="round"/>
+      <circle cx="34" cy="-13" r="8.5" fill="#04170E"/>
+      <circle cx="34" cy="-13" r="5" fill="#9BFFD0"/>
+      <rect x="32.6" y="-17.8" width="2.8" height="9.6" rx="1.4" fill="#04170E"/>
+      <circle cx="34" cy="13" r="8.5" fill="#04170E"/>
+      <circle cx="34" cy="13" r="5" fill="#9BFFD0"/>
+      <rect x="32.6" y="8.2" width="2.8" height="9.6" rx="1.4" fill="#04170E"/>
+      <path d="M66 0 H90 M90 0 L107 -11 M90 0 L107 11"
+            fill="none" stroke="#FF4D6D" stroke-width="5"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+
+  <!-- wordmark -->
+  <text x="382" y="176" font-family="Segoe UI, Inter, Helvetica Neue, Arial, sans-serif"
+        font-size="104" font-weight="800" letter-spacing="10" fill="#EAF6EF">VIPER</text>
+  <text x="386" y="236" font-family="Segoe UI, Microsoft YaHei, PingFang SC, Noto Sans CJK SC, sans-serif"
+        font-size="36" font-weight="600" fill="#7CFFB2">蝰蛇 · 安全研究运行时</text>
+  <text x="388" y="286" font-family="Segoe UI, Inter, Arial, sans-serif"
+        font-size="19" letter-spacing="4.5" fill="#6B7C8C">TARGET IN → CHAIN OUT</text>
+
+  <rect x="386" y="306" width="330" height="3" rx="1.5" fill="url(#rule)"/>
+</svg>
